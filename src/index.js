@@ -6,15 +6,16 @@ var express = require("express");
 var app = express();
 
 const staticPath = path.join(__dirname, "../public");
-const partialPath = path.join(__dirname, "../views/partials");
+const templatePath = path.join(__dirname, "../templates/views");
+const partialsPath = path.join(__dirname, "../templates/partials");
 hbs.localsAsTemplateData(app);
 
 
 app.use(express.static(staticPath));
 app.set("view engine", "hbs");
-hbs.registerPartials(partialPath);
+app.set("views", templatePath); // change views folder for hbs
+hbs.registerPartials(partialsPath);
 
-// app.set("views", "templates"); // change views folder for hbs
 
 app.locals.title = "Landed HTML5";
 
