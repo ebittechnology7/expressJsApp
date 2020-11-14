@@ -17,15 +17,16 @@ app.set("views", templatePath); // change views folder for hbs
 hbs.registerPartials(partialsPath);
 
 
-app.locals.title = "Landed HTML5";
+app.locals.title = "Landed Theme";
 
 app.get("/", (req, res) => {
     res.render("index", {
         myAccount: "My Account"
     }); 
 });
-app.get("/", (req, res) => {
-    console.log('This is home page');
+
+app.get("/elements", (req, res) => {
+    res.render("elements");
 });
 
 app.get('*', (req, res) => {
@@ -33,9 +34,7 @@ app.get('*', (req, res) => {
         errorNo: 'Error 404!',
         errorMsg: 'Oops... Page not found!'
     });
-})
-
-
+});
 
 app.listen(port, () => {
     console.log(`Listening to port ${port}`);
